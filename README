@@ -1,0 +1,5 @@
+Jared Morrison & Gregory Bell
+
+Control driver for mobile robot.
+
+Extension of Google's MediaPipe Gesture Recognition model to recognize specific hand gestures for controlling a small mobile robot.
