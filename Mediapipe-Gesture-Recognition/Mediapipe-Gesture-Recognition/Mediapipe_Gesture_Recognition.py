@@ -16,6 +16,7 @@ GestureRecognizerResult = mp.tasks.vision.GestureRecognizerResult
 VisionRunningMode = mp.tasks.vision.RunningMode
 
 
+
 #handle what to do with the results
 def print_result(result: GestureRecognizerResult, output_image: mp.Image, timestamp_ms: int):
     if result.gestures:
@@ -23,7 +24,7 @@ def print_result(result: GestureRecognizerResult, output_image: mp.Image, timest
 
 options = GestureRecognizerOptions(
     #load model downloaded from google mediapipe webpage
-    base_options=BaseOptions(model_asset_path='C:\\Users\\gbell\\OneDrive\\Desktop\\SNHU\\Spring-2024\\AI\\gesture_recognizer.task'),
+    base_options=BaseOptions(model_asset_path='C:\\Users\\gbell\\OneDrive\\Desktop\\SNHU\\Spring-2024\\AI\\custom_gesture_recognizer.task'),
     #set running mode to livestream
     running_mode=VisionRunningMode.LIVE_STREAM,
     result_callback=print_result)
