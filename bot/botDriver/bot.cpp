@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <iostream>
+#include <fstream>
 #include <conio.h> // For _kbhit() and _getch()
 
 using namespace std;
@@ -13,55 +14,30 @@ int main()
     configPort();
 
     unsigned char byteToSend;
-    char userInput;
-    cout << "Use w a s d as your controls. Press 'q' to quit.\n\n";
+    DWORD dwBytesWritten = 0;
 
-    do
+    string fileContents;
+    ifstream myFile;
+    while (1)
     {
-        // Check if a key has been pressed
-        if (_kbhit())
-        {
-            userInput = _getch();
-
-            switch (userInput)
-            {
-            case 'w':
-            {
-                byteToSend = 0xAA;
-                break;
-            }
-            case 'a':
-            {
-                byteToSend = 0xAB;
-                break;
-            }
-            case 's':
-            {
-                byteToSend = 0xAC;
-                break;
-            }
-            case 'd':
-            {
-                byteToSend = 0xAD;
-                break;
-            }
-            default:
-            {
-                break;
-            }
-            }
-
-            DWORD dwBytesWritten = 0;
-            if (userInput != 'q' && !WriteFile(hSerial, &byteToSend, 1, &dwBytesWritten, NULL))
-            {
-                cout << "Error writing";
-            }
+        myFile.open("..\\..\\gestureSharing.txt");
+        myFile >> fileContents;
+        std::cout << fileContents << endl;
+        if (fileContents == "pointer_thumb"){
+            byteToSend = 0xAA;
         }
-
-        // Delay to prevent busy-waiting
-        Sleep(100);
-
-    } while (userInput != 'q');
+        else if (fileContents == "middle_thumb"){
+            byteToSend = 0xAB;
+        }
+        else if (fileContents == "pinky_thumb"){
+            byteToSend = 0xAC;
+        }
+        else if (fileContents == "ring_thumb"){
+            byteToSend = 0xAD;
+        }
+        myFile.close();
+        WriteFile(hSerial, &byteToSend, 1, &dwBytesWritten, NULL);
+    }
 
     CloseHandle(hSerial);
 
