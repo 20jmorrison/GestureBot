@@ -2,6 +2,7 @@ import cv2
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+import os
 
 ###DEPENDENCIES###
 #pip install mediapipe
@@ -20,6 +21,10 @@ VisionRunningMode = mp.tasks.vision.RunningMode
 #handle what to do with the results
 def print_result(result: GestureRecognizerResult, output_image: mp.Image, timestamp_ms: int):
     if result.gestures:
+        f = open("..\\..\\gestureSharing.txt", "w")
+        f.write(result.gestures[0][0].category_name)
+        f.flush()
+        f.close()
         print('gesture recognition result: {}'.format(result.gestures[0][0].category_name))
 
 options = GestureRecognizerOptions(
@@ -62,6 +67,7 @@ with GestureRecognizer.create_from_options(options) as recognizer:
   
     # After the loop release the cap object 
     vid.release() 
+
     # Destroy all the windows 
     cv2.destroyAllWindows() 
 
