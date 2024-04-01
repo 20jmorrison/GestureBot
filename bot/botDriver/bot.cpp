@@ -20,7 +20,7 @@ int main()
     ifstream myFile;
     while (1)
     {
-        myFile.open("..\\..\\gestureSharing.txt");
+        myFile.open("..\\CV-Gesture-Control\\gestureSharing.txt");
         myFile >> fileContents;
         std::cout << fileContents << endl;
         if (fileContents == "pointer_thumb"){
