@@ -35,6 +35,9 @@ int main()
         else if (fileContents == "ring_thumb"){
             byteToSend = 0xAD;
         }
+        else if (fileContents == "open_hand") {
+            byteToSend = 0xAE;
+        }
         myFile.close();
         WriteFile(hSerial, &byteToSend, 1, &dwBytesWritten, NULL);
     }
