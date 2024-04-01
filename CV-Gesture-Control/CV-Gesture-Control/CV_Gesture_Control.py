@@ -100,7 +100,7 @@ def keypoint_pipeline(frame, min_conf=0.5):
       visualize_keypoints(image_resized, visualize_input, 
                           crop_x_min, crop_y_min)
       if gesture != 5:
-          f = open("..\\..\\gestureSharing.txt", "w")
+          f = open("..\\gestureSharing.txt", "w")
           f.write(labelmap[gesture])
           f.flush()
           f.close()
