@@ -12,7 +12,8 @@ enum DIRECTION {
   FORWARD,
   LEFT,
   REVERSE,
-  RIGHT
+  RIGHT,
+  STOP
 };
 
 DIRECTION Direction;
