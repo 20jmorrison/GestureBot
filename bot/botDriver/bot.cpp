@@ -20,7 +20,7 @@ int main()
     ifstream myFile;
     while (1)
     {
-        myFile.open("..\\CV-Gesture-Control\\gestureSharing.txt");
+        myFile.open("..\\..\\CV-Gesture-Control\\gestureSharing.txt");
         myFile >> fileContents;
         std::cout << fileContents << endl;
         if (fileContents == "pointer_thumb"){
@@ -49,7 +49,7 @@ int main()
 
 void configPort()
 {
-    hSerial = CreateFile("COM4",
+    hSerial = CreateFile("COM6",
                          GENERIC_WRITE,
                          0,
                          0,
