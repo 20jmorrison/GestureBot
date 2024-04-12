@@ -11,7 +11,7 @@ def visualize_keypoints(image, keypoints, xmin, ymin):
     # Draw a red circle at each keypoint
     for current_keypoints in keypoints:
         for (x, y) in current_keypoints:
-            cv2.circle(img,(int((x)), int(y + ymin)), 4, (0, 0, 255), -1)
+            cv2.circle(img,(int((x)), int(y)), 4, (0, 0, 255), -1)
 
     # Display the image with keypoints
     cv2.imshow("Image with Keypoints", img)
@@ -113,7 +113,10 @@ def keypoint_pipeline(frame, min_conf=0.5):
 #Load the Tensorflow Lite models into memory
 hand_model_path = "..\\Gesture-Recog-Pipeline\\detect.tflite"
 keypoint_model_path = "..\\Gesture-Recog-Pipeline\\keypoint_detector.tflite"
-gesture_classifier_model_path = "..\\Gesture-Recog-Pipeline\\Gesture_ClassifierV2.tflite"
+gesture_classifier_model_path = "..\\Gesture-Recog-Pipeline\\Gesture_ClassifierV6.tflite"
+#"..\\Gesture-Recog-Pipeline\\Gesture_ClassifierV4.tflite"
+
+#"..\\Gesture-Recog-Pipeline\\Gesture_ClassifierV2.tflite"
 
 interpreter = Interpreter(model_path=hand_model_path)
 interpreter.allocate_tensors()
@@ -149,7 +152,7 @@ while(True):
       
 # Capture the video frame 
     ret, frame = vid.read()   
-    frame = cv2.flip(frame,1)
+    #frame = cv2.flip(frame,1)
 
     keypoint_pipeline(frame, min_conf=0.5)
         

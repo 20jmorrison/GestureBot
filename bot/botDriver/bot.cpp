@@ -40,6 +40,7 @@ int main()
         }
         myFile.close();
         WriteFile(hSerial, &byteToSend, 1, &dwBytesWritten, NULL);
+
     }
 
     CloseHandle(hSerial);
